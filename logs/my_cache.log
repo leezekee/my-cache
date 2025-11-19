@@ -1,0 +1,15 @@
+2025-11-18 12:21:27 [INFO] my_cache-src\main.rs:46 -> Cache store initialized.
+2025-11-18 12:21:27 [INFO] my_cache-src\main.rs:49 -> Cluster ring initialized.
+2025-11-18 12:21:27 [INFO] my_cache-src\main.rs:55 -> Spawned gRPC server task.
+2025-11-18 12:21:27 [INFO] my_cache::rpc_server-src\rpc_server.rs:97 -> gRPC server (Internal) listening on 0.0.0.0:50051
+2025-11-18 12:21:27 [INFO] my_cache-src\main.rs:63 -> Spawned HTTP server task.
+2025-11-18 12:21:27 [INFO] my_cache::http_server-src\http_server.rs:58 -> HTTP server (Client Entry) listening on 0.0.0.0:9527
+2025-11-18 12:22:08 [INFO] my_cache-src\main.rs:36 -> Starting MyCache Node...
+2025-11-18 12:22:08 [INFO] my_cache-src\main.rs:37 -> Configuration loaded successfully.
+2025-11-18 12:22:08 [INFO] my_cache-src\main.rs:38 -> Initialized logger with level: info
+2025-11-18 12:22:08 [INFO] my_cache-src\main.rs:45 -> Cache store initialized.
+2025-11-18 12:22:08 [INFO] my_cache-src\main.rs:48 -> Cluster ring initialized.
+2025-11-18 12:22:08 [INFO] my_cache-src\main.rs:54 -> Spawned gRPC server task.
+2025-11-18 12:22:08 [INFO] my_cache::rpc_server-src\rpc_server.rs:97 -> gRPC server (Internal) listening on 0.0.0.0:50051
+2025-11-18 12:22:08 [INFO] my_cache-src\main.rs:62 -> Spawned HTTP server task.
+2025-11-18 12:22:08 [INFO] my_cache::http_server-src\http_server.rs:58 -> HTTP server (Client Entry) listening on 0.0.0.0:9527

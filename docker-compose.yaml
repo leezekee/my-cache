@@ -1,0 +1,56 @@
+# docker-compose.yaml
+version: "3.8"
+
+services:
+  my_cache_1:
+    build: .
+    container_name: my_cache_node1
+    ports:
+      - "9527:8000"
+    environment:
+      - MY_CACHE_LOG_LEVEL=info
+      
+      - MY_CACHE_HTTP_ADDR=0.0.0.0:8000 
+      - MY_CACHE_RPC_ADDR=0.0.0.0:50051 
+      
+      - MY_CACHE_MY_CONNECTABLE_ADDR=http://my_cache_node1:50051
+      - SEQ_MY_CACHE_CLUSTER_NODES=http://my_cache_node1:50051,http://my_cache_node2:50051,http://my_cache_node3:50051
+      
+      - MY_CACHE_CACHE__CAPACITY=100000
+      - MY_CACHE_CACHE__DEFAULT_TTL_SECONDS=3600 
+
+  my_cache_2:
+    build: .
+    container_name: my_cache_node2
+    ports:
+      - "9528:8000"
+    environment:
+      - MY_CACHE_LOG_LEVEL=info
+      - MY_CACHE_HTTP_ADDR=0.0.0.0:8000
+      - MY_CACHE_RPC_ADDR=0.0.0.0:50051
+      
+      - MY_CACHE_MY_CONNECTABLE_ADDR=http://my_cache_node2:50051
+      - SEQ_MY_CACHE_CLUSTER_NODES=http://my_cache_node1:50051,http://my_cache_node2:50051,http://my_cache_node3:50051
+
+      - MY_CACHE_CACHE__CAPACITY=100000
+      - MY_CACHE_CACHE__DEFAULT_TTL_SECONDS=3600
+
+  my_cache_3:
+    build: .
+    container_name: my_cache_node3
+    ports:
+      - "9529:8000"
+    environment:
+      - MY_CACHE_LOG_LEVEL=info
+      - MY_CACHE_HTTP_ADDR=0.0.0.0:8000
+      - MY_CACHE_RPC_ADDR=0.0.0.0:50051
+      
+      - MY_CACHE_MY_CONNECTABLE_ADDR=http://my_cache_node3:50051
+      - SEQ_MY_CACHE_CLUSTER_NODES=http://my_cache_node1:50051,http://my_cache_node2:50051,http://my_cache_node3:50051
+      
+      - MY_CACHE_CACHE__CAPACITY=100000
+      - MY_CACHE_CACHE__DEFAULT_TTL_SECONDS=3600
+
+networks:
+  default:
+    driver: bridge

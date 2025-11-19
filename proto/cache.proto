@@ -1,0 +1,62 @@
+// proto/cache.proto
+
+syntax = "proto3";
+
+// 包名
+package my.cache;
+
+// 定义缓存服务
+service CacheService {
+    // 内部：设置或更新一个键值对
+    rpc InternalSet(SetRequest) returns (SetResponse);
+
+    // 内部：获取一个键的值
+    rpc InternalGet(GetRequest) returns (GetResponse);
+
+    // 内部：删除一个键
+    rpc InternalDelete(DeleteRequest) returns (DeleteResponse);
+}
+
+// --- Set 消息 ---
+
+message SetRequest {
+    string key = 1;
+    string value_json = 2; 
+    
+    // --- 新增：TTL 选项 ---
+    // 我们使用 'oneof' 来确保三种状态中只会出现一种
+    oneof ttl_option {
+        // 选项 1: 指示使用接收节点的默认 TTL
+        bool use_default_ttl = 3; 
+        
+        // 选项 2: 指示设置为永久
+        bool set_permanent = 4;   
+        
+        // 选项 3: 指示使用一个特定的 TTL (秒)
+        uint64 specific_ttl_seconds = 5; 
+    }
+}
+
+message SetResponse {
+    // 成功时返回空
+}
+
+// --- Get 消息 ---
+
+message GetRequest {
+    string key = 1;
+}
+
+message GetResponse {
+    string value_json = 1;
+}
+
+// --- Delete 消息 ---
+
+message DeleteRequest {
+    string key = 1;
+}
+
+message DeleteResponse {
+    int64 deleted_count = 1;
+}
