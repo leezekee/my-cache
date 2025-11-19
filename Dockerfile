@@ -1,6 +1,6 @@
 # Dockerfile
 
-FROM swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/rust:1.88-slim as builder
+FROM swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/rust:1.88-slim AS builder
 
 COPY debian.sources /etc/apt/sources.list.d/debian.sources
 
