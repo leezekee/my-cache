@@ -23,10 +23,10 @@ COPY sources.list /etc/apt/sources.list
 RUN apt-get update && apt-get install -y \
     libc6
 
-RUN useradd -m -s /bin/bash appuser
-USER appuser
-WORKDIR /home/appuser/app
+RUN useradd -m -s /bin/bash mycache
+USER mycache
+WORKDIR /home/mycache/app
 
-COPY --from=builder --chown=appuser:appuser /app/target/release/my-cache .
+COPY --from=builder --chown=mycache:mycache /app/target/release/my-cache .
 
 ENTRYPOINT ["./my-cache"]
